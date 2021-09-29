@@ -5,7 +5,7 @@ import codecs
 import sys
 import os
 
-def logIn(path,pathD):
+def logIn(__location__,pathD):
 
     sg.theme('DarkAmber')   # Add a touch of color
 
@@ -30,11 +30,11 @@ def logIn(path,pathD):
             break
         if event == 'Ok' and values['-EMAIL-'] != '' and values['-PASSWORD-'] != '' and values['-VOR-'] != '':
             print('You entered ', values['-EMAIL-'] , values['-PASSWORD-'], values['-VOR-']) #TODO: if VOR isnt a number
-            file = codecs.open(path,'a','utf-8')
+            file = codecs.open(os.path.join(__location__, 'Data.txt'),'a','utf-8')
             file.write(values['-EMAIL-'] + '\n' + values['-PASSWORD-'] + '\n' + 'https://adam.unibas.ch/login.php?target=&client_id=adam&cmd=force_login&lang=de'+ '\n' + pathD)
             file.close()
             window.close()
-            VorlesungenList(values['-VOR-'],path)
+            VorlesungenList(values['-VOR-'],__location__)
             break
 
     window.close()
@@ -46,7 +46,7 @@ def replace_line(file_name, line_num, text):
     out.writelines(lines)
     out.close()
 
-def VorlesungenList(anzahl,path):
+def VorlesungenList(anzahl,__location__):
     sg.theme('DarkAmber')   # Add a touch of color
 
     menu_def = [['Help', 'About...']]
@@ -73,7 +73,7 @@ def VorlesungenList(anzahl,path):
             break
         if event == 'Save':
             print('You entered ', values)
-            file = codecs.open(path,'a','utf-8')
+            file = codecs.open(os.path.join(__location__, 'Data.txt'),'a','utf-8')
             for i in range (1,int(anzahl)+1):
                 file.write('\n' + values[i])
             file.close()
