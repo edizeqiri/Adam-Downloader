@@ -34,7 +34,8 @@ def run(email,passwort,path,url,Vorlesungen):
         web.click('Herunterladen')
         web.go_back()
         web.go_back()
-    time.sleep(10)
+    time.sleep(10) #TODO: add wait till finished
+
 
     # unzip to folder
     files=os.listdir(path)

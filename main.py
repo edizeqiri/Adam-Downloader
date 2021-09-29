@@ -6,7 +6,7 @@ import os
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-pathData = 'C:\\Users\\edi54\\Documents\\Programmierprojekt\\Python and Shit\\Data.txt'
+#pathData = 'C:\\Users\\edi54\\Documents\\Programmierprojekt\\Python and Shit\\Data.txt'
 pathDownload = 'C:/Users/Public/Documents'
 
 try:
@@ -15,6 +15,7 @@ try:
         lines = file.readlines()
         lines = [line.rstrip() for line in lines]
 except FileNotFoundError:
+
     # if first time using or deleted data file
     fiel = codecs.open("Data.txt","w+", "utf-8")
     GUI.logIn(__location__,pathDownload)
@@ -22,6 +23,7 @@ except FileNotFoundError:
         lines = file.readlines()
         lines = [line.rstrip() for line in lines]
 if len(lines) >=5:     
+
     # save data
     email = lines[0]
     passwort = lines[1]
@@ -32,7 +34,7 @@ if len(lines) >=5:
         Vorlesungen.append(lines[i])
     LoadnZip.run(email,passwort,pathDownload,url,Vorlesungen)
 else:
-    # make them repeat above
+    #TODO: make them repeat above
     print("penis")
 
 
