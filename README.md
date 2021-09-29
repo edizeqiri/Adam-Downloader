@@ -16,11 +16,18 @@ You can install them by copy/paste these into the terminal
 - `pip install webbot`
 - `pip install pysimplegui`
 
-# Run
+## How it works
 
 - Run main.py
 
-# Known Issues
+The files will be saved in de Documents folder: `C:/Users/Public/Documents`.
+
+It will only Dowload the lecutres you put in the fields. You can't choose which elements to download. It will always download the whole lecture.
+
+Be sure to always delete the downloaded files if you intend to restart the app or rebase them in a different directory of your needs.
+
+
+## Known Issues
 
 All of the Issues listed below will be fixed by me in the next patches.
 
@@ -30,7 +37,7 @@ All of the Issues listed below will be fixed by me in the next patches.
 
 Also if python can't find the libraries mentioned above and you are sure the installation worked, you may have different python versions and haven't selected the right one with the installation.
 
-# Thanks
+# Devs
 
 - Me
-- (Future helpers)
+- (Future devs)
