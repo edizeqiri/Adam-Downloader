@@ -22,7 +22,7 @@ except FileNotFoundError:
     with codecs.open(os.path.join(__location__, 'Data.txt'),'r','utf-8') as file:
         lines = file.readlines()
         lines = [line.rstrip() for line in lines]
-if len(lines) >=5:     
+if len(lines) >= 5:
 
     # save data
     email = lines[0]

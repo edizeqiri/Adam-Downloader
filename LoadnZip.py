@@ -17,6 +17,7 @@ def run(email,passwort,path,url,Vorlesungen):
     web.type(email)
     web.type(passwort , into='Password')
     web.click('Anmelden')
+    web.click("Herbstsemester")
 
     # press download buttons
     preString = "bl_cb_"
@@ -34,7 +35,8 @@ def run(email,passwort,path,url,Vorlesungen):
         web.click('Herunterladen')
         web.go_back()
         web.go_back()
-    time.sleep(10) #TODO: add wait till finished
+        web.click("Herbstsemester")
+    time.sleep(30) #TODO: add wait till finished
 
 
     # unzip to folder
@@ -46,7 +48,7 @@ def run(email,passwort,path,url,Vorlesungen):
             filedir = path+'/'+file[0:len(file) - 3]
             os.makedirs(filedir)
             for names in zip_file.namelist():
-                zip_file.extract(names,filedir)
+                zip_file.extract(names,filedir) #TODO: Extract only needed files
             zip_file.close()
 
     #deletes zip files
