@@ -2,9 +2,11 @@
 
 Download all your Adam Workspace with this app.
 
-# Installation
+## Installation
 
 Until webbot is fixed to be packaged in an executable, you will have to install python with its imports.
+
+Clone this repository or download the zip file.
 
 Install packages with pip:
 
@@ -26,7 +28,7 @@ All of the Issues listed below will be fixed by me in the next patches.
 - in the Field "Anzahl Vorlesungen" please only put numbers not letters.
 - If the app isn't working as it should just delete the Data.txt file and try to run it again.
 
-# Devs
+## Devs
 
 - Me
 - (Future devs)
