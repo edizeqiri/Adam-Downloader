@@ -133,3 +133,4 @@ Data.txt
 /dist/
 demo.py
 /.idea/
+.vscode/settings.json

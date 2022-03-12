@@ -6,14 +6,6 @@ import bs4
 import lxml.html
 from waiting import wait
 
-def downloads_finished(path):
-    for file in os.listdir(path):
-        if file.endswith(".zip"):
-            continue
-        else:
-            return False
-    return True
-
 def run(email,passwort,path,url,amount):
     
     # make dir in path
@@ -61,10 +53,21 @@ def run(email,passwort,path,url,amount):
 
     # wait till all downloads finishfinished
     wait(lambda: downloads_finished(path), timeout_seconds=180, waiting_for="something to be ready")
-   
+    unziper(path)
+    zip_deleter(path)
 
-   
-    # unzip to folder
+# helper function for wait
+def downloads_finished(path):
+    for file in os.listdir(path):
+        if file.endswith(".zip"):
+            continue
+        else:
+            return False
+    return True
+
+
+# unzip to folder
+def unziper(path):   
     files=os.listdir(path)
     for file in files:
         if file.endswith('.zip'):
@@ -76,7 +79,10 @@ def run(email,passwort,path,url,amount):
                 zip_file.extract(names,filedir)
             zip_file.close()
 
-    #deletes zip files
+#deletes zip files
+def zip_deleter(path):
+    
+    files=os.listdir(path)
     for file in files:
         if file.endswith('.zip'):
             filePath=path+'/'+file
