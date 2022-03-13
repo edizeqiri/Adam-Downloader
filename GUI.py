@@ -6,22 +6,22 @@ import sys
 import os
 import webbrowser
 
-def logIn(__location__,pathD):
+def logIn(__location__,pathD, url):
 
-    sg.theme('DarkAmber')   # Add a touch of color
-
+    sg.theme('Dark Grey 13')   # Add a touch of color
+    #sg.Titlebar('Dark Grey 13')
     menu_def = [['Help', 'About...']]
 
     # All the stuff inside your window.
-    layout = [  [sg.Text('Geben Sie hier ihre Daten an. Sie können nur Ok drücken wenn alles ausgefüllt ist.')],
+    layout = [  [sg.MenubarCustom(menu_def, sg.theme_button_color()[1], sg.theme_button_color()[0], (5, 0))],
+                [sg.Text('Geben Sie hier ihre Daten an. Sie können nur Ok drücken wenn alles ausgefüllt ist.')],
                 [sg.Text('Email:      '), sg.InputText(key='-EMAIL-')],
                 [sg.Text('Password:'), sg.InputText(key='-PASSWORD-')],
                 [sg.Text('Anzahl Vorlesungen:'), sg.InputText(key='-VOR-')],
-                [sg.Ok(), sg.Cancel()],
-                [sg.Menu(menu_def)] ]
+                [sg.Ok(), sg.Cancel()],]
 
     # Create the Window
-    window = sg.Window('Adam Download', layout)
+    window = sg.Window('Adam Download', layout, grab_anywhere=True, use_custom_titlebar=True, keep_on_top=True)
 
     # Event Loop to process "events" and get the "values" of the inputs
     while True:
@@ -33,15 +33,14 @@ def logIn(__location__,pathD):
             webbrowser.open('https://github.com/edizeqiri/Adam-Downloader')
 
         # saves email, pass and lectures
-        if event == 'Ok' and values['-EMAIL-'] != '' and values['-PASSWORD-'] != '' and values['-VOR-'] != '':
-            print('You entered ', values['-EMAIL-'] , values['-PASSWORD-'], values['-VOR-']) #TODO: if VOR isnt a number
+        if event == 'Ok' and values['-EMAIL-'] != '' and values['-PASSWORD-'] != '' and values['-VOR-'] in ("0123456789.-"):
+            #print('You entered ', values['-EMAIL-'] , values['-PASSWORD-'], values['-VOR-']) #TODO: if VOR isnt a number
             file = codecs.open(os.path.join(__location__, 'Data.txt'),'a','utf-8')
-            file.write(values['-EMAIL-'] + '\n' + values['-PASSWORD-'] + '\n' + 'https://adam.unibas.ch/login.php?target=&client_id=adam&cmd=force_login&lang=de'+ '\n' + pathD)
+            file.write(values['-EMAIL-'] + '\n' + values['-PASSWORD-'] + '\n' + url + '\n' + pathD + "\n" + values["-VOR-"])
             file.close()
             window.close()
-            VorlesungenList(values['-VOR-'],__location__)
+            #VorlesungenList(values['-VOR-'],__location__)
             break
-
     window.close()
     
 def replace_line(file_name, line_num, text):
@@ -51,6 +50,7 @@ def replace_line(file_name, line_num, text):
     out.writelines(lines)
     out.close()
 
+# legacy
 def VorlesungenList(anzahl,__location__):
     sg.theme('DarkAmber')   # Add a touch of color
 

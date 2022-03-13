@@ -5,12 +5,17 @@ import time
 import bs4
 import lxml.html
 from waiting import wait
+import shutil
 
 def run(email,passwort,path,url,amount):
     
     # make dir in path
-    path = os.path.join(path, "Vorlesungen")
-    os.mkdir(path)
+    path = path+ "/"+"Vorlesungen"
+    if os.path.exists(path) == False:
+        os.mkdir(path)
+    else:
+        shutil.rmtree(path)
+        os.mkdir(path)
     
     # open Browser to url
     web = Browser(showWindow=True, downloadPath=path)
