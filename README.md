@@ -33,11 +33,9 @@ Speficy in the GUI your credentials and the amount of lectures you want to downl
 
 All of the Issues listed below will be fixed by me in the next patches.
 
-- Don't leave spaces while typing.
-- in the Field "Anzahl Vorlesungen" please only put numbers not letters.
-- If the app isn't working as it should just delete the Data.txt file and try to run it again.
+- Headless download doesn't work right -> for now you will see chrome GUI.
 
-## Devs
+## TODO
 
-- Me
-- (Future devs)
+- Add additional GUI for start and end of program.
+- Add progress bar for download.

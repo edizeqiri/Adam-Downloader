@@ -33,4 +33,4 @@ if len(lines) >= 4:
     amount = int(lines[4])
     LoadnZip.run(email,passwort,pathDownload,url,amount)
 else:
-    print("penis")
+    print("Delete Data.txt and try again!")
