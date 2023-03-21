@@ -1,5 +1,5 @@
 beautifulsoup4==4.10.0
-lxml==4.6.5
+lxml==4.9.1
 PySimpleGUI==4.57.0
 waiting==1.4.1
 webbot==0.34
